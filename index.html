@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            html{
+                background-image: url("Defaults/wallpaper1.jpg");
+            }
+            
+            @font-face{
+                font-family: zeldaFont;
+                src: url("Defaults/The Wild Breath of Zelda.otf");
+            }
+            
+            h1{
+                font-family: zeldaFont;
+                text-shadow: 2px 2px 2px white;
+            }
+            
+            div{
+                font-size: 25px;
+                text-shadow: 2px 2px 2px white;
+                font-family: zeldaFont;
+            }
+            
+            canvas{
+                border: 5px solid black;
+            }
+        </style>
+        
+        <title>Exploration 3: Canvas Tag (PRO)</title>
+    </head>
+<body>
+    <h1>Canvas Tags in HTML PRO Edition</h1>
+    
+    <div>As said previously, the Canvas Tag can embed pictures and videos within it</div>
+    <div>Here's some effects with it</div>
+    <canvas id="sixthCanvas" width="500" height="200">
+        This browser does not support the canvas element!
+        Example6
+    </canvas> 
+    <br>
+    
+    <br>
+    <div>You can create custom shapes by drawing lines</div>
+    <canvas id="seventhCanvas" width="500" height="200">
+        <video id="video">
+            
+        </video>
+        Example7
+    </canvas>
+    <br>
+    
+    <br>
+    <div>Fill them to make a custom solid shape</div>
+    <canvas id="eighthCanvas" width="500" height="200">
+        Example8
+    </canvas>
+    <br>
+    
+    <br>
+    <div>You can also add curves to your shape</div>
+    <canvas id="ninthCanvas" width="500" height="200">
+    Example9
+    </canvas>
+    <br>
+    
+    <br>
+    <div>You can also add custom effects to these shapes</div>
+    <canvas id="tenthCanvas" width="500" height="200">
+        Example10
+    </canvas>
+    <br>
+
+    <script>        
+        var canvas = document.getElementById("seventhCanvas");
+        var outline = canvas.getContext("2d");
+        outline.fillStyle = "Blue";
+        outline.fillRect(0,0,500,200);
+        outline.beginPath();
+        outline.moveTo(200,75);
+        outline.lineTo(200, 125);
+        outline.lineTo(300, 100);
+        outline.lineTo(200,75);
+        outline.stroke();
+        
+        
+        
+        window.onload = function(){
+            canvas = document.getElementById("sixthCanvas");
+            outline = canvas.getContext("2d");
+            var img = new Image();
+            img.src = "horseman.jpg";
+            img.onload = function(){
+                outline.drawImage(img, 0, 0, 500, 200);
+                
+                outline.beginPath();
+                outline.moveTo(0,0);
+                outline.lineTo(500, 200);
+                outline.stroke();
+                outline.beginPath();
+                outline.moveTo(500,0);
+                outline.lineTo(0,200);
+                outline.stroke();
+            }
+        }
+        
+        
+        var canvas = document.getElementById("eighthCanvas");
+        var outline = canvas.getContext("2d");
+        outline.fillStyle = "Blue";
+        outline.fillRect(0,0,500,200);
+        outline.beginPath();
+        outline.moveTo(200,75);
+        outline.lineTo(200, 125);
+        outline.lineTo(300, 100);
+        outline.lineTo(200,75);
+        outline.stroke();
+        outline.fillStyle="Red";
+        outline.fill();
+        
+        canvas = document.getElementById("ninthCanvas");
+        outline = canvas.getContext("2d");
+        outline.fillStyle="Blue";
+        outline.fillRect(0,0,500,200);
+        outline.fillStyle="Red";
+        outline.fillRect(0,50,500,50);
+        outline.fillStyle="Green";
+        outline.fillRect(0,100,500,50);
+        outline.fillRect(0,70,500,10);
+        outline.fillStyle="Red";
+        outline.fillRect(0,120,500,10);
+        outline.beginPath();
+        outline.moveTo(200,75);
+        outline.bezierCurveTo(200, 50, 100, 25, 200, 125);
+        outline.bezierCurveTo(200, 100, 225, 175, 300, 100);
+        outline.bezierCurveTo(300, 100, 225, 75, 200,75);
+        outline.stroke();
+        outline.fillStyle="Blue";
+        outline.fill();
+        
+        canvas = document.getElementById("tenthCanvas");
+        outline = canvas.getContext("2d");
+        var grade = outline.createLinearGradient(0, 0, 500, 0);
+        grade.addColorStop(0, "Blue");
+        grade.addColorStop(1, "Black");
+        outline.fillStyle=grade;
+        outline.fillRect(0,0,500,200);
+        grade = outline.createLinearGradient(0, 50, 500, 100);
+        grade.addColorStop(1, "Red");
+        grade.addColorStop(0, "White");
+        outline.fillStyle=grade;
+        outline.fillRect(0,50,500,100);
+        outline.beginPath();
+        outline.moveTo(200, 75);
+        outline.lineTo(200, 125);
+        outline.lineTo(300, 100);
+        outline.lineTo(200,75);
+        outline.stroke();
+        grade = outline.createLinearGradient(200, 75, 300, 125);
+        grade.addColorStop(0, "Black");
+        grade.addColorStop(1, "Blue");
+        outline.fillStyle=grade;
+        outline.fill();
+    </script>
+</body>
+</html>
